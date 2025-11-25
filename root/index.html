@@ -12,17 +12,30 @@
         }
         
         body {
-            background: url("../images/celeste background.gif");
-            background-size: cover;       
-            background-attachment: fixed; 
-            background-position: center;  
-            background-repeat: no-repeat; 
+            /* Removed background properties from here */
             color: #e0e0e0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.7;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+        }
+
+        /* NEW: This handles the background image perfectly on all devices */
+        body::before {
+            content: "";
+            position: fixed; /* Stays in place while you scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Puts it behind everything */
+            
+            /* Background settings */
+            background: url("../images/celeste background.gif");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover; /* Ensures it fills the screen without distortion */
         }
 
         .navbar {
@@ -101,6 +114,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.8s ease-out;
         }
         
         .video-container iframe {
@@ -122,6 +136,7 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(194, 90, 124, 0.3);
+            animation: fadeInUp 1s ease-out 0.3s backwards;
         }
 
         h1 {
@@ -130,6 +145,20 @@
             color: #ffffff;
             font-weight: 700;
             line-height: 1.2;
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c25a7c, #e8a0a0, #c25a7c);
+            animation: expandWidth 1.2s ease-out 0.8s forwards;
+            box-shadow: 0 0 10px rgba(194, 90, 124, 0.5);
         }
 
         h2 {
@@ -140,6 +169,19 @@
             font-weight: 600;
             border-bottom: 2px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 0.5rem;
+            animation: fadeInUp 0.6s ease-out backwards;
+            animation-delay: calc(var(--section-index) * 0.1s);
+        }
+
+        h2:nth-of-type(1) { --section-index: 1; }
+        h2:nth-of-type(2) { --section-index: 2; }
+        h2:nth-of-type(3) { --section-index: 3; }
+        h2:nth-of-type(4) { --section-index: 4; }
+        h2:nth-of-type(5) { --section-index: 5; }
+
+        h2:hover {
+            transform: translateX(5px);
+            transition: transform 0.3s ease;
         }
 
         h3 {
@@ -148,6 +190,11 @@
             margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
             color: #e0e0e0;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        h3:hover {
+            color: #ffffff;
         }
 
         p {
@@ -165,9 +212,15 @@
             margin-bottom: 0.75rem;
             font-size: clamp(0.9rem, 2vw, 1rem);
             color: #d0d0d0;
+            transition: transform 0.2s ease, color 0.2s ease;
         }
 
         li strong {
+            color: #ffffff;
+        }
+
+        li:hover {
+            transform: translateX(3px);
             color: #ffffff;
         }
 
@@ -192,6 +245,10 @@
             overflow-wrap: break-word;
         }
 
+        .works-cited li:hover {
+            transform: translateX(5px);
+        }
+
         .works-cited a {
             word-break: break-all;
         }
@@ -201,7 +258,6 @@
             color: #b0b0b0;
         }
 
-        /* Improve link styling */
         a {
             color: #e8a0a0;
             text-decoration: none;
@@ -226,108 +282,18 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        .video-container {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .content-section {
-            animation: fadeInUp 1s ease-out 0.3s backwards;
-        }
-
-        h1 {
-            animation: fadeInUp 1s ease-out 0.5s backwards;
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #c25a7c, #e8a0a0, #c25a7c);
-            animation: expandWidth 1.2s ease-out 0.8s forwards;
-            box-shadow: 0 0 10px rgba(194, 90, 124, 0.5);
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes expandWidth {
-            to {
-                width: 100%;
-            }
-        }
-
-        h2 {
-            animation: fadeInUp 0.6s ease-out backwards;
-            animation-delay: calc(var(--section-index) * 0.1s);
-        }
-
-        h2:nth-of-type(1) { --section-index: 1; }
-        h2:nth-of-type(2) { --section-index: 2; }
-        h2:nth-of-type(3) { --section-index: 3; }
-        h2:nth-of-type(4) { --section-index: 4; }
-        h2:nth-of-type(5) { --section-index: 5; }
-
-        /* Hover effects */
-        h2:hover {
-            transform: translateX(5px);
-            transition: transform 0.3s ease;
-        }
-
-        h3 {
-            transition: color 0.3s ease;
-        }
-
-        h3:hover {
-            color: #ffffff;
-        }
-
-        li {
-            transition: transform 0.2s ease, color 0.2s ease;
-        }
-
-        li:hover {
-            transform: translateX(3px);
-            color: #ffffff;
-        }
-
-        .works-cited li:hover {
-            transform: translateX(5px);
+            to { width: 100%; }
         }
 
         /* Responsive background for mobile devices */
         @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
-                background-size: cover;
-                background-position: center center;
-            }
+            /* REMOVED background overrides here, they are no longer needed 
+               because body::before handles it globally */
             
             .navbar {
                 padding: 0.875rem 1rem;
@@ -372,12 +338,8 @@
 
         /* Extra small devices */
         @media (max-width: 480px) {
-            body {
-                background-attachment: scroll;
-                background-size: cover;
-                background-position: center center;
-            }
-            
+            /* REMOVED background overrides here as well */
+
             .navbar-links {
                 gap: 1rem;
             }
