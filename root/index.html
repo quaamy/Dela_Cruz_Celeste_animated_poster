@@ -1,8 +1,42 @@
 <html>
     <head>
-        <title>celeste animated poster</title>
+        <title>celeste animated poster</title        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body bgcolor="black">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/xQjeGxWyaUY?si=Q1tY_YPDsVPCBG4W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <body>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/xQjeGxWyaUY?si=Q1tY_YPDsVPCBG4W" title="YouTube video player" f
+            ameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" r
+            ferrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }    
+        body {
+            background-color: rgb(12, 12, 12);
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            
+        .video-container {
+            width: 90vw;
+            height: 90vh;
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
+            
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </html>
