@@ -24,24 +24,6 @@
             position: relative;
             overflow-x: hidden;
         }
-        
-        /* Responsive background for mobile devices */
-        @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
-                background-size: cover;
-                background-position: center center;
-            }
-        }
-        
-        /* Optimize for smaller screens */
-        @media (max-width: 480px) {
-            body {
-                background-attachment: scroll;
-                background-size: cover;
-                background-position: center center;
-            }
-        }
 
         .navbar {
             background: rgba(26, 13, 46, 0.9);
@@ -339,8 +321,14 @@
             transform: translateX(5px);
         }
 
-        /* Mobile optimizations */
+        /* Responsive background for mobile devices */
         @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                background-size: cover;
+                background-position: center center;
+            }
+            
             .navbar {
                 padding: 0.875rem 1rem;
             }
@@ -384,6 +372,12 @@
 
         /* Extra small devices */
         @media (max-width: 480px) {
+            body {
+                background-attachment: scroll;
+                background-size: cover;
+                background-position: center center;
+            }
+            
             .navbar-links {
                 gap: 1rem;
             }
@@ -424,7 +418,7 @@
     <div class="main-wrapper">
         <div class="video-container">
             <iframe 
-                src="https://www.youtube.com/embed/-ut8-d0ahg8?si=UV4GuaAraZXFKbks&autoplay=1&mute=1&loop=1&playlist=-ut8-d0ahg8" 
+                src="https://www.youtube.com/embed/-ut8-d0ahg8?si=UV4GuaAraZXFKbks&autoplay=1&mute=0&loop=1&playlist=-ut8-d0ahg8" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
